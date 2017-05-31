@@ -18,6 +18,6 @@
 
 module Kitchen
   module Driver
-    GCE_VERSION = "1.2.0".freeze
+    SFMC_GOOGLE_VERSION = "1.2.0".freeze
   end
 end

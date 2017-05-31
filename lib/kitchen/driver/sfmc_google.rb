@@ -20,7 +20,7 @@
 require "gcewinpass"
 require "google/apis/compute_v1"
 require "kitchen"
-require "kitchen/driver/gce_as_version"
+require "kitchen/driver/sfmc_google_version"
 require "securerandom"
 
 module Kitchen
@@ -28,7 +28,7 @@ module Kitchen
     # Google Compute Engine driver for Test Kitchen
     #
     # @author Andrew Leonard <andy@hurricane-ridge.com>
-    class Gce < Kitchen::Driver::Base
+    class SfmcGoogle < Kitchen::Driver::Base
       attr_accessor :state
 
       SCOPE_ALIAS_MAP = {

@@ -18,4 +18,4 @@
 
 require "rspec"
 
-require_relative "../lib/kitchen/driver/gce_as"
+require_relative "../lib/kitchen/driver/sfmc_google"

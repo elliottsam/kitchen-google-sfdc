@@ -19,7 +19,7 @@
 
 require "spec_helper"
 require "google/apis/compute_v1"
-require "kitchen/driver/gce_as"
+require "kitchen/driver/sfmc_google_version"
 require "kitchen/provisioner/dummy"
 require "kitchen/transport/dummy"
 require "kitchen/verifier/dummy"
@@ -40,12 +40,12 @@ shared_examples_for "a validity checker" do |config_key, api_method, *args|
   end
 end
 
-describe Kitchen::Driver::Gce do
+describe Kitchen::Driver::SfmcGoogle do
   let(:logged_output) { StringIO.new }
   let(:logger)        { Logger.new(logged_output) }
   let(:platform)      { Kitchen::Platform.new(name: "fake_platform") }
   let(:transport)     { Kitchen::Transport::Dummy.new }
-  let(:driver)        { Kitchen::Driver::Gce.new(config) }
+  let(:driver)        { Kitchen::Driver::SfmcGoogle.new(config) }
 
   let(:project)       { "test_project" }
   let(:zone)          { "test_zone" }
@@ -330,7 +330,7 @@ describe Kitchen::Driver::Gce do
 
       expect(Google::Apis::ClientOptions).to receive(:new).and_return(client_options)
       expect(client_options).to receive(:application_name=).with("kitchen-google")
-      expect(client_options).to receive(:application_version=).with(Kitchen::Driver::GCE_VERSION)
+      expect(client_options).to receive(:application_version=).with(Kitchen::Driver::SFMC_GOOGLE_VERSION)
 
       expect(Google::Apis::ComputeV1::ComputeService).to receive(:new).and_return(compute_service)
       expect(driver).to receive(:authorization).and_return("authorization_object")
