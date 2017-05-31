@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "kitchen/driver/gce_as_version"
 
 Gem::Specification.new do |s|
-  s.name        = "kitchen-google"
+  s.name        = "kitchen-google-as"
   s.version     = Kitchen::Driver::GCE_VERSION
   s.date        = "2016-03-10"
   s.summary     = "Kitchen::Driver::Gce"
