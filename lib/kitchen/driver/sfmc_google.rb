@@ -382,7 +382,7 @@ module Kitchen
         }
 
         if config[:custom_metadata]
-          puts config[:custom_metadata]
+          info("Server <#{config[:custom_metadata].inspect}> created.")
         end
 
         Google::Apis::ComputeV1::Metadata.new.tap do |metadata_obj|
