@@ -54,13 +54,14 @@ module Kitchen
       }
 
       kitchen_driver_api_version 2
-      plugin_version Kitchen::Driver::GCE_VERSION
+      plugin_version Kitchen::Driver::SFMC_GOOGLE_VERSION
 
       required_config :project
 
       default_config :region, nil
       default_config :zone, nil
 
+      default_config :custom_metadata, nil
       default_config :autodelete_disk, true
       default_config :disk_size, 10
       default_config :disk_type, "pd-standard"
@@ -379,6 +380,10 @@ module Kitchen
           "test-kitchen-instance" => instance.name,
           "test-kitchen-user"     => env_user,
         }
+
+        if config[:custom_metadata]
+          puts config[:custom_metadata]
+        end
 
         Google::Apis::ComputeV1::Metadata.new.tap do |metadata_obj|
           metadata_obj.items = metadata.each_with_object([]) do |(k, v), memo|
