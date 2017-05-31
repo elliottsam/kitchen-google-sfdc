@@ -167,7 +167,7 @@ module Kitchen
         @connection.authorization = authorization
         @connection.client_options = Google::Apis::ClientOptions.new.tap do |opts|
           opts.application_name    = "kitchen-google"
-          opts.application_version = Kitchen::Driver::GCE_VERSION
+          opts.application_version = Kitchen::Driver::SFMC_GOOGLE_VERSION
         end
 
         @connection
