@@ -19,7 +19,7 @@
 
 require "spec_helper"
 require "google/apis/compute_v1"
-require "kitchen/driver/gce"
+require "kitchen/driver/gce_as"
 require "kitchen/provisioner/dummy"
 require "kitchen/transport/dummy"
 require "kitchen/verifier/dummy"

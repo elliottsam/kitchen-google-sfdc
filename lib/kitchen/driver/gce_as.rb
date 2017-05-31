@@ -20,7 +20,7 @@
 require "gcewinpass"
 require "google/apis/compute_v1"
 require "kitchen"
-require "kitchen/driver/gce_version"
+require "kitchen/driver/gce_as_version"
 require "securerandom"
 
 module Kitchen

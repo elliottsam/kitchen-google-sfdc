@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "kitchen/driver/gce_version"
+require "kitchen/driver/gce_as_version"
 
 Gem::Specification.new do |s|
   s.name        = "kitchen-google"
