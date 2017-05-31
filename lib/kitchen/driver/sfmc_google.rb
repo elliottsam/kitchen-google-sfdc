@@ -382,13 +382,14 @@ module Kitchen
         }
 
         if config[:custom_metadata]
-          info("Server <#{config[:custom_metadata].inspect}> created.")
+          metadata = metadata.merge(config[:custom_metadata])
+          info("Using custom metadata <#{config[:custom_metadata].inspect}>.")
         end
 
         Google::Apis::ComputeV1::Metadata.new.tap do |metadata_obj|
           metadata_obj.items = metadata.each_with_object([]) do |(k, v), memo|
             memo << Google::Apis::ComputeV1::Metadata::Item.new.tap do |item|
-              item.key   = k
+              item.key   = k.to_s
               item.value = v
             end
           end
