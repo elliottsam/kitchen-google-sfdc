@@ -391,9 +391,7 @@ module Kitchen
           config[:custom_metadata_from_disk].each do |key, value|
             file_contents = File.read(value)
             info("Getting file contents for #{key} metadata from #{value}")
-            metadata = {
-              key.to_s => file_contents.to_s,
-            }
+            metadata = metadata.merge(key.to_s => file_contents.to_s)
           end
         end
 
