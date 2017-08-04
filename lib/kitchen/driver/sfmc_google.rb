@@ -62,6 +62,7 @@ module Kitchen
       default_config :zone, nil
 
       default_config :custom_metadata, nil
+      default_config :custom_metadata_from_disk, nil
       default_config :autodelete_disk, true
       default_config :disk_size, 10
       default_config :disk_type, "pd-standard"
@@ -384,6 +385,14 @@ module Kitchen
         if config[:custom_metadata]
           metadata = metadata.merge(config[:custom_metadata])
           info("Using custom metadata <#{config[:custom_metadata].inspect}>.")
+        end
+
+        if config[:custom_metadata_from_disk]
+          config[:custom_metadata_from_disk].each do |key, value|
+            file_contents = File.read(value)
+            info("Getting file contents for #{key} metadata from #{value}")
+            metadata = metadata.merge(key.to_s => file_contents.to_s)
+          end
         end
 
         Google::Apis::ComputeV1::Metadata.new.tap do |metadata_obj|

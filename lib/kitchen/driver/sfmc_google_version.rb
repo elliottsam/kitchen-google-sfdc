@@ -18,6 +18,6 @@
 
 module Kitchen
   module Driver
-    SFMC_GOOGLE_VERSION = "1.6.0".freeze
+    SFMC_GOOGLE_VERSION = "1.9.0".freeze
   end
 end
